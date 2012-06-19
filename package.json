@@ -1,0 +1,17 @@
+{
+  "author": "Christian Tellnes <christian@tellnes.no> (http://christian.tellnes.com/)",
+  "name": "yocto",
+  "version": "0.0.1",
+  "main": "yocto.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  },
+  "description": "Yocto Dom Utility",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tellnes/yocto.git"
+  }
+}
