@@ -207,6 +207,12 @@
     this._.style.display = 'none'
     return this
   }
+  Yocto.prototype.toggle = function() {
+    this[this.visible() ? 'hide' : 'show']()
+  }
+  Yocto.prototype.visible = function() {
+    return this._.style.display != 'none'
+  }
 
   var matchesSelector = (function() {
     var elm = document.createElement('div')
