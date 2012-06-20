@@ -16,11 +16,11 @@
   function isString(obj) {
     return getType(obj) == 'string'
   }
-  
+
   function isYocto(obj) {
     return obj instanceof Yocto
   }
-  
+
   function unYocto(obj) {
     return isYocto(obj) ? obj._ : obj
   }
@@ -111,7 +111,7 @@
   })
 
 
-  
+
 
   var attributesTranslation = { 'className': 'class'
                               , 'htmlFor': 'for'
@@ -161,7 +161,7 @@
     Yocto(element).append(this)
     return this
   }
-  
+
   Yocto.prototype.remove = function() {
     this._.parentNode && this._.parentNode.removeChild(this._)
   }
@@ -247,7 +247,7 @@
     var elementStyle = this._.style
     for (var property in styles) elementStyle[property] = styles[property]
   }
-  
+
 
   Yocto.type = getType
 
