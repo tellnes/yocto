@@ -183,6 +183,11 @@
     this._.addEventListener(type, handle, false)
     return this
   }
+  Yocto.prototype.fire = function(type) {
+    var event = document.createEvent('HTMLEvents')
+    event.initEvent(type, true, true)
+    return this._.dispatchEvent(event)
+  }
 
   Yocto.prototype.equal = function(element) {
     element = unYocto(element)
