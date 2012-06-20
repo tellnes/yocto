@@ -180,7 +180,7 @@
     return this
   }
   Yocto.prototype.off = function(type, handle) {
-    this._.addEventListener(type, handle, false)
+    this._.removeEventListener(type, handle, false)
     return this
   }
   Yocto.prototype.fire = function(type) {
