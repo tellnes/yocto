@@ -278,6 +278,14 @@
     for (var property in styles) elementStyle[property] = styles[property]
   }
 
+  Yocto.prototype.isChildOf = function(parent) {
+    parent = unYocto(parent)
+    var element = this._
+    while(element = element.parentNode) {
+      if (element == parent) return true
+    }
+    return false
+  }
 
   Yocto.type = getType
 
