@@ -72,7 +72,6 @@
 
   ; [ ['html', 'innerHTML']
     , 'className'
-    , 'value'
   ].forEach(function(name) {
     var prop
     if (isString(name)) {
@@ -100,10 +99,14 @@
     , 'offsetLeft'
     , 'offsetWidth'
     , 'offsetHeight'
+    , 'value'
   ].forEach(function(name) {
     Object.defineProperty(Yocto.prototype, name, {
       get: function() {
         return this._[name]
+      },
+      set: function(value) {
+        this._[name] = value
       }
     })
   })
