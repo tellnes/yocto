@@ -62,6 +62,7 @@
 
 
   ; [ 'cloneNode'
+    , 'querySelector'
   ].forEach(function(name) {
     Yocto.prototype[name] = function() {
       return Yocto(this._[name].apply(this._, arguments))
@@ -111,6 +112,7 @@
   ; [ 'parentNode'
     , 'nextSibling'
     , 'nextElementSibling'
+    , 'firstElementChild'
   ].forEach(function(name) {
     Object.defineProperty(Yocto.prototype, name, {
       get: function() {
@@ -241,6 +243,11 @@
     }
 
     return Yocto(element)
+  }
+
+  Yocto.prototype.down = function(selector) {
+    if (!selector) return this.firstElementChild
+    return this.querySelector(selector)
   }
 
   Yocto.prototype.insertBefore = function(element) {
