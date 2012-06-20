@@ -52,6 +52,15 @@
   })
 
 
+  ; [ 'appendChild'
+  ].forEach(function(name) {
+    Yocto.prototype[name] = function(element) {
+      this._[name](unYocto(element))
+      return this
+    }
+  })
+
+
   ; [ 'cloneNode'
   ].forEach(function(name) {
     Yocto.prototype[name] = function() {
