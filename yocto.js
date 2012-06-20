@@ -132,21 +132,29 @@
                               }
 
 
-  Yocto.prototype.setAttributes = function (attr) {
-    var name, value
-    for(name in attr) {
-      if (attr.hasOwnProperty(name)) {
-        value = attr[name]
-        name = (attributesTranslation[name] || name)
-        if (value === false || value === null) {
-          this._.removeAttribute(name)
-        } else if (value === true) {
-          this._.setAttribute(name, name)
-        } else {
-          this._.setAttribute(name, value)
-        }
+  Yocto.prototype.attr = function(name, value) {
+
+    if (arguments.length === 1) {
+      if (isString(name)) {
+        return this._.getAttribute(name)
       }
+
+      for(var key in name) if (name.hasOwnProperty(key)) this.attr(key, name[key])
+
+    } else {
+
+      name = attributesTranslation[name] || name
+
+      if (value === false || value === null) {
+        this._.removeAttribute(name)
+      } else if (value === true) {
+        this._.setAttribute(name, name)
+      } else {
+        this._.setAttribute(name, value)
+      }
+
     }
+
     return this
   }
 
@@ -293,7 +301,7 @@
   Yocto.create = function(name, attr, append) {
     var element = Yocto(document.createElement(name))
 
-    if (attr) element.setAttributes(attr)
+    if (attr) element.attr(attr)
 
     if (append) element.append(append)
 
