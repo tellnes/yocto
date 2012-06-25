@@ -70,27 +70,8 @@
   })
 
 
-  ; [ ['html', 'innerHTML']
-    , 'className'
-  ].forEach(function(name) {
-    var prop
-    if (isString(name)) {
-      prop = name
-    } else {
-      prop = name[1]
-      name = name[0]
-    }
-
-    Yocto.prototype[name] = function(value) {
-      if (!value) return this._[prop]
-
-      this._[prop] = value
-      return this
-    }
-  })
-
-
   ; [ 'classList'
+    , 'className'
     , 'dataSet'
     , 'nodeType'
     , 'nodeName'
@@ -100,6 +81,7 @@
     , 'offsetWidth'
     , 'offsetHeight'
     , 'value'
+    , 'innerHTML'
   ].forEach(function(name) {
     Object.defineProperty(Yocto.prototype, name, {
       get: function() {
@@ -125,6 +107,12 @@
   })
 
 
+  Yocto.prototype.html = function(value) {
+    if (!value) return this._.innerHTML
+
+    this._.innerHTML = value
+    return this
+  }
 
 
   var attributesTranslation = { 'className': 'class'
