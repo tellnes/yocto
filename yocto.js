@@ -82,7 +82,7 @@
     }
 
     Yocto.prototype[name] = function(value) {
-      if (!value) return this._[prop]
+      if (!arguments.length) return this._[prop]
 
       this._[prop] = value
       return this
