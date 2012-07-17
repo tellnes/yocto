@@ -119,10 +119,32 @@
                               , 'htmlFor': 'for'
                               }
 
+      , attributeAliases =  { 'class': 'className'
+                            , 'for': 'htmlFor'
+                            }
+
 
   Yocto.prototype.attr = function(name, value) {
+    var length = arguments.length
 
-    if (arguments.length === 1) {
+    if (length === 0) {
+      var attr = this._.attributes
+        , len = attr.length
+        , i = 0
+        , result = {}
+
+      for(; i < len; i++) {
+        name = attr[i].name
+        value = attr[i].value
+
+        if (name === value) value = true
+
+        result[name] = value
+        if (attributeAliases[name]) result[attributeAliases[name]] = value
+      }
+      return result
+
+    } else if (length === 1) {
       if (isString(name)) {
         return this._.getAttribute(name)
       }
