@@ -174,6 +174,7 @@
 
   Yocto.prototype.remove = function() {
     this._.parentNode && this._.parentNode.removeChild(this._)
+    return this
   }
 
   Yocto.prototype.on = function(type, handle) {
@@ -205,6 +206,7 @@
   }
   Yocto.prototype.toggle = function() {
     this[this.visible() ? 'hide' : 'show']()
+    return this
   }
   Yocto.prototype.visible = function() {
     return this._.style.display != 'none'
@@ -266,12 +268,14 @@
     } else {
       element.parentNode.appendChild(this)
     }
+    return this
   }
 
 
   Yocto.prototype.setStyle = function(styles) {
     var elementStyle = this._.style
     for (var property in styles) elementStyle[property] = styles[property]
+    return this
   }
 
   Yocto.prototype.isChildOf = function(parent) {
