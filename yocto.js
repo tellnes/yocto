@@ -108,7 +108,7 @@
 
 
   Yocto.prototype.html = function(value) {
-    if (!value) return this._.innerHTML
+    if (!arguments.length) return this._.innerHTML
 
     this._.innerHTML = value
     return this
