@@ -270,6 +270,11 @@
     }
     return this
   }
+  Yocto.prototype.insertTop = function(element) {
+    element = unYocto(element)
+    element.insertBefore(this._, element.firstChild)
+    return this
+  }
 
 
   Yocto.prototype.setStyle = function(styles) {
